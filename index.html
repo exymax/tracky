@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>Hand Tracking</title>
+        <link rel="stylesheet" href="styles/main.css">
+    </head>
+    <body>
+        <main>
+            <video id="video" autoplay="true" style="display:none;"></video>
+            <canvas id="canvas" style="width:640px; height:480px;border:1px solid black;"></canvas>
+            <div style="margin: 15px;">
+                <input id="cbxHull" type="checkbox" checked="checked">Convex Hull</input>
+                <input id="cbxDefects" type="checkbox">Convexity Defects</input>
+                <input id="cbxSkin" type="checkbox" checked="checked">Skin Detection</input>
+            </div>
+        </main>
+        <script type="text/javascript" src="js/polyfill.js"></script>
+        <script type="text/javascript" src="js/cv.js"></script>
+        <script type="text/javascript" src="js/handtracking.js"></script>
+        <script type="text/javascript" src="js/demo-tracker.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var controls = {
+                    fast: true,
+                    video: document.getElementById('video'),
+                    canvas: document.getElementById('canvas'),
+                    enableHull: document.getElementById('cbxHull'),
+                    enableDefects: document.getElementById('cbxDefects'),
+                    enableSkin: document.getElementById('cbxSkin')
+                }
+                var tracker = new DemoTracker(controls);
+                tracker.start();
+            });
+        </script>
+    </body>
+</html>
